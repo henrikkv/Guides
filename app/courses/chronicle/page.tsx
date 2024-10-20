@@ -1,8 +1,7 @@
-export default function ChronicleCoursePage() {
+export default function Story() {
     return (
-      <div>
-        <h1>Chronicle Course</h1>
-        {/* Add your course content here */}
-      </div>
-    );
-  }
+        <div>
+            chronicle
+        </div>
+    )
+}

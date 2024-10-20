@@ -1,8 +1,7 @@
-export default function StoryCoursePage() {
+export default function Story() {
     return (
-      <div>
-        <h1>Story Course</h1>
-        {/* Add your course content here */}
-      </div>
-    );
-  }
+        <div>
+            hello
+        </div>
+    )
+}

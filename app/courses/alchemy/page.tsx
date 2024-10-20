@@ -1,8 +1,7 @@
-export default function AlchemyCoursePage() {
+export default function Story() {
     return (
-      <div>
-        <h1>Alchemy Course</h1>
-        {/* Add your course content here */}
-      </div>
-    );
-  } 
+        <div>
+            alchemy
+        </div>
+    )
+}
