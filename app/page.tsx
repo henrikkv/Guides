@@ -25,6 +25,27 @@ export default function Home() {
   const signerStatus = useSignerStatus();
   const { logout } = useLogout();
 
+  const requestAttestation = async (userAddress: string) => {
+    try {
+      const response = await fetch('/api/attest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userAddress, lessonId: 1 }), // Assuming lessonId 1 for this example
+      });
+      
+      if (response.ok) {
+        alert('Attestation requested successfully!');
+      } else {
+        alert('Failed to request attestation.');
+      }
+    } catch (error) {
+      console.error('Error requesting attestation:', error);
+      alert('An error occurred while requesting attestation.');
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col bg-white text-black items-center p-4 justify-start text-center">
       <div className="w-full flex max-w-[368px] justify-between items-center mb-4 mt-2 rounded-lg">
@@ -53,6 +74,16 @@ export default function Home() {
           <span>12 XP</span>
         </div>
       </div>
+      
+      {user && (
+        <button 
+          className="btn btn-primary w-full max-w-[368px] mb-4"
+          onClick={() => requestAttestation(user.address)}
+        >
+          Request Attestation
+        </button>
+      )}
+      
       <h1 className="text-2xl max-w-[368px] w-full justify-start text-left align-left font-bold mb-4">Trending</h1>
       <Link href="/courses/sign" className="cursor-pointer">
         <Image
@@ -73,7 +104,6 @@ export default function Home() {
             <h1 className="text-2xl font-bold mb-2 mt-4 text-left">Dive back in</h1>
           </div>
           <div className="w-full max-w-[368px]">
-
             <div className="overflow-x-auto w-full scrollbar-hide">
               <div className="flex space-x-[10px]">
                 {courseCards.map((card) => (
