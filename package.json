@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@account-kit/core": "^4.0.0",
+    "@account-kit/core": "^4.0.1",
     "@account-kit/infra": "^4.0.0",
     "@account-kit/react": "^4.0.1",
     "@ethsign/sp-sdk": "^0.7.5",
