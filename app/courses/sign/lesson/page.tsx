@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useUser } from "@account-kit/react";
 
 // Content for the four paragraphs
 const content = [
@@ -61,11 +62,34 @@ const questions = [
 ];
 
 export default function LessonPage() {
+  const user = useUser();
   const [stage, setStage] = useState(0);
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [score, setScore] = useState(0);
+  const [quizFinished, setQuizFinished] = useState(false);
+
+  const requestAttestation = async (userAddress: string) => {
+    try {
+      const response = await fetch('/api/attest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userAddress, lessonId: 1 }), // Assuming lessonId 1 for this example
+      });
+      
+      if (response.ok) {
+        alert('Attestation requested successfully!');
+      } else {
+        alert('Failed to request attestation.');
+      }
+    } catch (error) {
+      console.error('Error requesting attestation:', error);
+      alert('An error occurred while requesting attestation.');
+    }
+  };
 
   const handleContinue = () => {
     if (stage < content.length - 1) {
@@ -81,6 +105,7 @@ export default function LessonPage() {
         setSelectedAnswer(null);
       } else {
         // Quiz finished
+        setQuizFinished(true);
         alert(`Quiz completed! Your score: ${score + (selectedAnswer === questions[currentQuestion].correct ? 1 : 0)}/${questions.length}`);
       }
     }
@@ -118,6 +143,19 @@ export default function LessonPage() {
             <h2 className="text-2xl font-bold mb-4">{content[stage].header}</h2>
             <p className="mb-8">{content[stage].paragraph}</p>
           </>
+        ) : quizFinished ? (
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-bold mb-4">Lesson Completed!</h2>
+            <p className="mb-8">Congratulations on finishing the lesson.</p>
+            {user && (
+              <button 
+                className="btn btn-primary w-full max-w-[368px] mb-4"
+                onClick={() => requestAttestation(user.address)}
+              >
+                Request Attestation
+              </button>
+            )}
+          </div>
         ) : (
           <div>
             <h2 className="text-2xl font-bold mb-4">{questions[currentQuestion].question}</h2>
