@@ -74,16 +74,6 @@ export default function Home() {
           <span>12 XP</span>
         </div>
       </div>
-      
-      {user && (
-        <button 
-          className="btn btn-primary w-full max-w-[368px] mb-4"
-          onClick={() => requestAttestation(user.address)}
-        >
-          Request Attestation
-        </button>
-      )}
-      
       <h1 className="text-2xl max-w-[368px] w-full justify-start text-left align-left font-bold mb-4">Trending</h1>
       <Link href="/courses/sign" className="cursor-pointer">
         <Image
