@@ -1,8 +1,7 @@
-export default function PolygonCoursePage() {
+export default function Story() {
     return (
-      <div>
-        <h1>Polygon Course</h1>
-        {/* Add your course content here */}
-      </div>
-    );
-  }
+        <div>
+            polygon
+        </div>
+    )
+}

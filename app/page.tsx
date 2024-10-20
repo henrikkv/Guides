@@ -74,21 +74,21 @@ export default function Home() {
           </div>
           <div className="w-full max-w-[368px]">
 
-        <div className="overflow-x-auto w-full scrollbar-hide">
-          <div className="flex space-x-[10px]">
-            {courseCards.map((card) => (
-              <Link key={card.id} href={card.href} className="flex-shrink-0 w-[333px] h-[329px] relative cursor-pointer">
-                <Image
-                  src={card.svgPath}
-                  alt={`${card.id} card`}
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </Link>
-            ))}
+            <div className="overflow-x-auto w-full scrollbar-hide">
+              <div className="flex space-x-[10px]">
+                {courseCards.map((card) => (
+                  <Link key={card.id} href={card.href} className="flex-shrink-0 w-[333px] h-[329px] relative cursor-pointer">
+                    <Image
+                      src={card.svgPath}
+                      alt={`${card.id} card`}
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
         </div>
       ) : (
         <div className="flex flex-col gap-4 items-center justify-center h-[80vh]">
