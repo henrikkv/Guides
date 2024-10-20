@@ -4,7 +4,7 @@ import SvgList from '@/components/SvgList';
 
 const svgs = [
   { src: '/coinbase-card1.svg' },
-  { src: '/coinbase-card2.svg', link: '/courses/coinbase/lesson' },
+  { src: '/coinbase-card2.svg', link: '/courses/coinbase/lesson-wallet' },
   { src: '/coinbase-card3.svg' },
   { src: '/coinbase-card4.svg' },
 ];

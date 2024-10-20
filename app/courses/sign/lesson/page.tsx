@@ -79,7 +79,7 @@ export default function LessonPage() {
         },
         body: JSON.stringify({ userAddress, lessonId: 1 }), // Assuming lessonId 1 for this example
       });
-      
+
       if (response.ok) {
         alert('Attestation requested successfully!');
       } else {
@@ -116,7 +116,7 @@ export default function LessonPage() {
       {/* Custom Header */}
       <header className="flex justify-between items-center px-4 h-[62px] bg-white shadow-sm">
         <Link href="/courses/sign" className="text-black">
-          <Image src="/back-button.svg" alt="Back" width={24} height={24} />
+          <Image src="/back-button-icon.svg" alt="Back" width={24} height={24} />
         </Link>
         <div className="flex items-center">
           <Image
@@ -148,7 +148,7 @@ export default function LessonPage() {
             <h2 className="text-2xl font-bold mb-4">Lesson Completed!</h2>
             <p className="mb-8">Congratulations on finishing the lesson.</p>
             {user && (
-              <button 
+              <button
                 className="btn btn-primary w-full max-w-[368px] mb-4"
                 onClick={() => requestAttestation(user.address)}
               >
@@ -177,8 +177,8 @@ export default function LessonPage() {
       </div>
       {((!quizStarted && stage < content.length) || (quizStarted && currentQuestion < questions.length)) && (
         <div className="p-4 flex justify-center">
-          <button 
-            onClick={handleContinue} 
+          <button
+            onClick={handleContinue}
             className={`w-[393px] h-[75px] relative ${quizStarted && selectedAnswer === null ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={quizStarted && selectedAnswer === null}
           >

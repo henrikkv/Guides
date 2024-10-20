@@ -29,6 +29,17 @@ body {
   }
 }
 
+.btn-continue {
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.btn-continue:hover {
+  transform: scale(1.001);
+  /* Slightly enlarge the SVG */
+  filter: brightness(1.03);
+  /* Lighten the color */
+}
+
 .svg-card {
   transition: transform 0.3s ease, fill 0.3s ease;
 }
@@ -38,4 +49,10 @@ body {
   /* Slightly enlarge the SVG */
   filter: brightness(1.03);
   /* Lighten the color */
+}
+
+.bg-course {
+  background: #FFF4E2;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
